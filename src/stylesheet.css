@@ -1,23 +1,36 @@
 @font-face {
-    font-family: "Sunset Boulevard";
-    src: url("Sunset-Boulevard.woff");
+    font-family: "Parisienne";
+    font-style: normal;
+    font-weight: 400;
+    src: local("Parisienne"), local("Parisienne-Regular"), url(Parisienne.woff2) format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 body {
-    font-family: "Sunset Boulevard";
-    background-color: #ffdcce;
+    font-family: "Parisienne";
+    background-color: #e5af93;
     margin: 0;
-    padding-top: 2em;
+    padding-top: 4em;
     display: flex;
     flex-direction: column;
 }
 
-body a~p::after {
-    content: "Ceci n'est pas une page HTML."
+body a~p::before {
+    content: "Ceci n'est pas une page";
 }
 
-body a:hover~p::after {
-    content: "It's a ZIP file."
+body a~p>span::before {
+    font-family: sans-serif;
+    font-style: italic;
+    content: " HTML";
+}
+
+body a:hover~p::before {
+    content: "";
+}
+
+body a:hover~p>span::before {
+    content: "It is a ZIP file";
 }
 
 a,
@@ -27,23 +40,24 @@ p {
 }
 
 p {
-    font-size: 10em;
+    font-size: 5em;
     margin-top: .5em;
     margin-bottom: .5em;
 }
 
 footer {
-    background-color: #f56f6f;
+    background-color: #9f4830;
     font-family: sans-serif;
     position: fixed;
     text-align: right;
     bottom: 0;
     right: 0;
     width: 100%;
-    padding: .5em;
+    padding: .75em;
 }
 
 footer,
 footer a {
-    color: white;
+    color: #2d140e;
+    font-weight: bold;
 }
