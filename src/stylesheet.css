@@ -1,0 +1,49 @@
+@font-face {
+    font-family: "Sunset Boulevard";
+    src: url("Sunset-Boulevard.woff");
+}
+
+body {
+    font-family: "Sunset Boulevard";
+    background-color: #ffdcce;
+    margin: 0;
+    padding-top: 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+body a~p::after {
+    content: "Ceci n'est pas une page HTML."
+}
+
+body a:hover~p::after {
+    content: "C'est un fichier ZIP."
+}
+
+a,
+p {
+    align-self: center;
+    text-align: center;
+}
+
+p {
+    font-size: 10em;
+    margin-top: .5em;
+    margin-bottom: .5em;
+}
+
+footer {
+    background-color: #f56f6f;
+    font-family: sans-serif;
+    position: fixed;
+    text-align: right;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    padding: .5em;
+}
+
+footer,
+footer a {
+    color: white;
+}
