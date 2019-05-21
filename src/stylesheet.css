@@ -17,7 +17,7 @@ body a~p::after {
 }
 
 body a:hover~p::after {
-    content: "C'est un fichier ZIP."
+    content: "It's a ZIP file."
 }
 
 a,
