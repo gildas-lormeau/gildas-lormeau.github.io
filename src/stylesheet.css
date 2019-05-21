@@ -10,7 +10,7 @@ body {
     font-family: "Parisienne";
     background-color: #e5af93;
     margin: 0;
-    padding-top: 4em;
+    padding-top: 10vh;
     display: flex;
     flex-direction: column;
 }
@@ -33,6 +33,10 @@ body a:hover~p>span::before {
     content: "It is a ZIP file";
 }
 
+img {
+    max-width: 30vmax;
+}
+
 a,
 p {
     align-self: center;
@@ -40,9 +44,10 @@ p {
 }
 
 p {
-    font-size: 5em;
-    margin-top: .5em;
-    margin-bottom: .5em;
+    font-size: 7vmax;
+    margin: 25px;
+    margin-top: 4vh;
+    margin-bottom: 50px;
 }
 
 footer {
