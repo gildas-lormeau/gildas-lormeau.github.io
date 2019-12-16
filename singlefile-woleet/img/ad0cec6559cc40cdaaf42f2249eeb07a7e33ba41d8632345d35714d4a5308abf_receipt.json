@@ -1,0 +1,53 @@
+{
+    "targetHash": "ad0cec6559cc40cdaaf42f2249eeb07a7e33ba41d8632345d35714d4a5308abf",
+    "signature": {
+        "signature": "H9WMfpChAw8x88fBbvF0bOsEf86ABnoiTX2GWNrpiC7qea8dt9Dco7/TbnQLx0asrzpXhQ5ivZKUj5jefarb6RY=",
+        "signedHash": "a60ea2564265b707d89f078a335fe4578eb2bc376f91eb1be6d099238bcec4dc",
+        "identityURL": "https://identity.woleet.io/identity",
+        "pubKey": "1AAdZsAW9J3HjBdHy3gds3piSjAUJFruf1"
+    },
+    "merkleRoot": "a43695a8ecd570dfbbf2ba841e8ce4ba02c5d7d6300b0b5750acd2ed65c7766a",
+    "proof": [
+        {
+            "left": "73f4694748db9bd0a4eebaa95599b0505b9cd56990e711b01b8a13c52f2f488e"
+        },
+        {
+            "left": "a1da48778724a4ee04db34f3551d11047e2155dd6f506a2b877338f6568020c5"
+        },
+        {
+            "right": "0d64f9ac5f56158172a6237993e910c5d96014d440997d27de2ac76847164719"
+        },
+        {
+            "left": "fbc3dfcdcc6e1032440c444ecf1bbb63fac348e33e74beecc672084944e0adf4"
+        },
+        {
+            "right": "967782501e265c4837b54395d503ce7ada040df61303d72688dd63fd915ffa6f"
+        },
+        {
+            "left": "593f5ee85a43c3787875b936e3fe831eb26ab45c74f51517a0521e486e84fc5b"
+        },
+        {
+            "left": "62b8670f294953a73b909e84392796e48e1fc7fcaaa894b413dcf3af4e71ca23"
+        },
+        {
+            "right": "9b78bbcd34e2e4a13b329febc67a78cd2eebae41fa0af1e7a3ba8eae28b13f3e"
+        },
+        {
+            "left": "21350dce4076fd8dda2f0302be36d20739d82016acbf47618867b64a97062dd4"
+        },
+        {
+            "left": "0a82720b984b27909c0d00ace229b1d9356dc5f5d00b8f848a719361600577c3"
+        }
+    ],
+    "anchors": [
+        {
+            "sourceId": "6e1440a25ec1c56ff2d5a621e3c31d312075698258340b9f5fcc995fd1ea0d73",
+            "type": "BTCOpReturn"
+        }
+    ],
+    "type": "ChainpointSHA256v2",
+    "@context": [
+        "https://w3id.org/chainpoint/v2",
+        "https://w3id.org/woleet/signature/v2"
+    ]
+}

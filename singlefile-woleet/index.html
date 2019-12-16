@@ -1,0 +1,113 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="dist/proof-verifier-widget.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
+
+    <script>
+        var dev = true;
+
+        function receiptVerified(widgetId, receipt, verificationResult) {
+            var logElement = document.getElementById('verification-logging');
+            var logElementItem = document.createElement('p');
+
+            logElementItem.innerHTML = 'Receipt "' + receipt.targetHash + '" computed by widget id "' + widgetId + '"';
+
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <img src="img/file.svg" alt="">
+    </header>
+    <div class="container">
+        <div class="header">
+            Verify SingleFile Proof of Existence
+        </div>
+        <div class="verifier-description">
+            If you chose to generate a bitcoin proof of exitence in SingleFile preferences, it is possible a few hours later to verify the blockchain timestamp here by choosing or dropping the generated file. You can then download the proof receipt and keep it as an undisputable proof that can be verified independently.
+        </div>  
+        <div class="file-hasher">
+            <div id="dropzone" class="drop-zone">
+                <div id="file-hasher" class='file-hasher-widget'
+                    styles='{"width": "100%", "icon": {"width": "100%"}, "progress": {"icon": {"color": "black"}}}'
+                    visibility-title="false" visibility-progress="false" visibility-controls-reset="false"
+                    visibility-filename="false" visibility-hash="false"
+                    observers='{"hashCalculated": "hashCalculated", "hashingStarted": "hashingStarted", "hashingCanceled": "hashingCanceled", "hashingProgress": "hashingProgress", "widgetReset": "widgetReset"}'>
+                </div>
+                <div id="dropzone-content" class="content">
+                    <img src="img/cloud.png" alt="">Drop/Choose file
+                </div>
+            </div>
+            <div id="no-proof-content">
+                <div id="no-proof" class="proof-verifier">
+                    <div class="header-proof error">
+                        <img src="img/error.png" alt="">
+                        No proof found for this file
+                    </div>
+                </div>
+                <div>
+                    <a href="" class="btn-primary" title="PROOF VERIFIER">
+                        Retry <span class="button-line-top"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div id="loading">
+                <div class="content">
+                    <img src="img/loading.png" alt="">Verify file
+                </div>
+
+            </div>
+            <div id='verifierWidgetTemplate' style="display: none">
+                {{#proofs}}
+                <div class="verifier-part">
+                    <div class="proof-verifier">
+                        <div class="header-proof ok">
+                            <img src="img/tick.png" alt="">
+
+                            <span>Proof of existence found in Bitcoin
+                                <b>{{ dateSigned }}
+                                </b>
+                            </span>
+                        </div>
+                        <div class="content">
+                            {{#receipt.anchors.0}}
+                                <img src="img/see.png"/><a href="https://share.woleet.io/?receiptURL=https%3A%2F%2Fapi.woleet.io%2Fv1%2Freceipt%2F{{anchorId}}" target="blank">
+                                    See Bitcoin proof details
+                                </a>
+                                <br>
+                                <img src="img/download.png"/><a onclick="downloadProof({{index}})"
+                                    target="blank">
+                                    Download proof receipt
+                                </a>
+                            {{/receipt.anchors.0}}
+                        </div>
+                    </div>
+                    {{/proofs}}
+
+                </div>
+                <a id="btn-retry" href="" class="btn-primary" title="PROOF VERIFIER" style="margin-top: 10px;">
+                    Retry <span class="button-line-top"></span>
+                </a>
+            </div>
+            <div class="woleet">
+                <p>Bitcoin proof provided by</p>
+                <a href="https://www.woleet.io" target="blank"><img src="img/woleet.png" alt=""></a>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.3/mustache.min.js" type="text/javascript"
+            media="screen"></script>
+        
+        <script type="text/javascript" src="js/utils.js"></script>
+        
+</body>
+
+</html>
