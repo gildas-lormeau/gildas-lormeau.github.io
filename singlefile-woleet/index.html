@@ -85,7 +85,12 @@
                                 <br>
                                 <img src="img/download.png"/><a onclick="downloadProof({{index}})"
                                     target="blank">
-                                    Download proof receipt
+                                    Download proof receipt (Chainpoint v2) 
+                                </a>
+                                <br>
+                                <img src="img/download.png"/><a href="https://api.woleet.io/v1/receipt/{{anchorId}}/ots"
+                                    target="blank">
+                                    Download proof receipt (Opentimestamps) 
                                 </a>
                             {{/receipt.anchors.0}}
                         </div>
