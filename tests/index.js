@@ -40,30 +40,30 @@
                 canvasElement.height = viewerElement.height = height;
                 videoElement.src = VIDEO_FILENAME;
                 videoElement.onerror = reject;
-                videoElement.oncanplay = () => oncanplay(videoElement, indexWorker / fps);
-                videoElement.onseeked = () => onseeked(videoElement, canvasElement.getContext("2d"), () => {
-                    videoElement.onseeked = null;
-                    resolve();
-                })
+                videoElement.oncanplay = () => {
+                    videoElement.oncanplay = null;
+                    videoElement.currentTime = (indexWorker / fps) + VIDEO_TIME_OFFSET;
+                };
+                videoElement.onseeked = () => onseeked(videoElement, canvasElement.getContext("2d"),
+                    () => progressElement.value++,
+                    () => {
+                        videoElement.onseeked = null;
+                        resolve();
+                    })
             }));
         }
         return Promise.all(workerPromises);
     }
 
-    function oncanplay(videoElement, startTime) {
-        videoElement.oncanplay = null;
-        videoElement.currentTime = startTime + VIDEO_TIME_OFFSET;
-    };
-
-    function onseeked(videoElement, decoderContext, callback) {
+    function onseeked(videoElement, decoderContext, progressCallback, endCallback) {
         decoderContext.drawImage(videoElement, 0, 0, width, height);
         const currentFrame = Math.floor(videoElement.currentTime * fps);
         images[currentFrame] = decoderContext.getImageData(0, 0, width, height);
-        progressElement.value++;
+        progressCallback(currentFrame);
         if (currentFrame < maxFrames) {
             videoElement.currentTime = Math.min(((currentFrame + workers) / fps) + VIDEO_TIME_OFFSET, videoElement.duration);
         } else {
-            callback();
+            endCallback();
         }
     }
 
