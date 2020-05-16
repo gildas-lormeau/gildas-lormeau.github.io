@@ -7,7 +7,6 @@
     const viewer = document.getElementById("viewer");
     const progress = document.getElementById("progress");
     const form = document.forms[0];
-
     let images, width, height, maxFrames, fps, workers, animationFrameId;
 
     form.onsubmit = async event => {
@@ -45,10 +44,8 @@
             const decoder = document.createElement("canvas");
             const decoderContext = decoder.getContext("2d");
             loader.addEventListener("canplay", loadImages);
-            decoder.width = width;
-            decoder.height = height;
-            viewer.width = width;
-            viewer.height = height;
+            decoder.width = viewer.width = width;
+            decoder.height = viewer.height = height;
             loader.src = VIDEO_FILENAME;
 
             function loadImages() {
