@@ -8,7 +8,7 @@
     const progress = document.getElementById("progress");
     const form = document.forms[0];
 
-    let images, width, height, maxFrames, fps, workers;
+    let images, width, height, maxFrames, fps, workers, animationFrameId;
 
     form.onsubmit = async event => {
         images = [];
@@ -18,6 +18,9 @@
         workers = Number(form.workers.value);
         fps = VIDEO_FPS / (360 / (maxFrames + 1));
         event.preventDefault();
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
         progress.hidden = false;
         viewer.hidden = true;
         progress.value = 0;
@@ -71,7 +74,7 @@
     }
 
     function viewImages(frameNumber = 0) {
-        requestAnimationFrame(() => {
+        animationFrameId = requestAnimationFrame(() => {
             viewer.getContext("2d").putImageData(images[frameNumber], 0, 0);
             viewImages((frameNumber + 1) % maxFrames);
         });
