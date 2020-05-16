@@ -57,7 +57,7 @@
             function captureFrame() {
                 decoderContext.drawImage(loader, 0, 0, width, height);
                 const imageData = decoderContext.getImageData(0, 0, width, height);
-                const currentFrame = Math.floor((loader.currentTime) * fps);
+                const currentFrame = Math.floor(loader.currentTime * fps);
                 images[currentFrame] = imageData;
                 progress.value++;
                 if (currentFrame < maxFrames) {
