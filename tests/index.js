@@ -32,7 +32,7 @@
 
     function decodeFrames() {
         const workerPromises = [];
-        for (let index = 0; index < workers; index++) {
+        for (let indexWorker = 0; indexWorker < workers; indexWorker++) {
             workerPromises.push(new Promise((resolve, reject) => {
                 const videoElement = document.createElement("video");
                 const canvasElement = document.createElement("canvas");
@@ -40,7 +40,7 @@
                 canvasElement.height = viewerElement.height = height;
                 videoElement.src = VIDEO_FILENAME;
                 videoElement.onerror = reject;
-                videoElement.oncanplay = () => oncanplay(videoElement, index / fps);
+                videoElement.oncanplay = () => oncanplay(videoElement, indexWorker / fps);
                 videoElement.onseeked = () => onseeked(videoElement, canvasElement.getContext("2d"), () => {
                     videoElement.onseeked = null;
                     resolve();
