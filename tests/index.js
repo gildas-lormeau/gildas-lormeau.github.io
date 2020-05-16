@@ -1,25 +1,37 @@
-(async () => {
+(() => {
 
-    const WIDTH = 1920;
-    const HEIGHT = 1080;
-    const VIDEO_FPS = 30;
-    const MAX_FRAMES = 359;
-    const VIDEO_FILENAME = "0001-0359.mp4";
-    const WORKERS = 8;
+    const VIDEO_FILENAME = "0001-0718.mp4";
+    const VIDEO_FPS = 15;
+    const VIDEO_TIME_OFFSET = 0.0125;
 
     const viewer = document.getElementById("viewer");
     const progress = document.getElementById("progress");
-    const images = [];
+    const form = document.forms[0];
 
-    await decodeFrames();
-    progress.remove();
-    viewer.hidden = false;
-    viewImages();
+    let images, width, height, maxFrames, fps, workers;
+
+    form.onsubmit = async event => {
+        images = [];
+        width = Number(form.width.value);
+        height = Number(form.height.value);
+        maxFrames = Number(form.count.value) - 1;
+        workers = Number(form.workers.value);
+        fps = VIDEO_FPS / (360 / (maxFrames + 1));
+        event.preventDefault();
+        progress.hidden = false;
+        viewer.hidden = true;
+        progress.value = 0;
+        progress.max = maxFrames;
+        await decodeFrames();
+        progress.hidden = true;
+        viewer.hidden = false;
+        viewImages();
+    };
 
     function decodeFrames() {
         const promises = [];
-        for (let index = 0; index < WORKERS; index++) {
-            promises.push(workerDecodeFrames(index / VIDEO_FPS));
+        for (let index = 0; index < workers; index++) {
+            promises.push(workerDecodeFrames(index / fps));
         }
         return Promise.all(promises);
     }
@@ -30,26 +42,26 @@
             const decoder = document.createElement("canvas");
             const decoderContext = decoder.getContext("2d");
             loader.addEventListener("canplay", loadImages);
-            decoder.width = WIDTH;
-            decoder.height = HEIGHT;
-            viewer.width = WIDTH;
-            viewer.height = HEIGHT;
+            decoder.width = width;
+            decoder.height = height;
+            viewer.width = width;
+            viewer.height = height;
             loader.src = VIDEO_FILENAME;
 
             function loadImages() {
                 loader.removeEventListener("canplay", loadImages);
                 loader.addEventListener("seeked", captureFrame);
-                loader.currentTime = startTime;
+                loader.currentTime = startTime + VIDEO_TIME_OFFSET;
             }
 
             function captureFrame() {
-                decoderContext.drawImage(loader, 0, 0, WIDTH, HEIGHT);
-                const imageData = decoderContext.getImageData(0, 0, WIDTH, HEIGHT);
-                const currentFrame = Math.round(loader.currentTime * VIDEO_FPS);
+                decoderContext.drawImage(loader, 0, 0, width, height);
+                const imageData = decoderContext.getImageData(0, 0, width, height);
+                const currentFrame = Math.floor((loader.currentTime) * fps);
                 images[currentFrame] = imageData;
                 progress.value++;
-                if (loader.currentTime < loader.duration) {
-                    loader.currentTime = (currentFrame + WORKERS) / VIDEO_FPS;
+                if (currentFrame < maxFrames) {
+                    loader.currentTime = ((currentFrame + workers) / fps) + VIDEO_TIME_OFFSET;
                 } else {
                     loader.removeEventListener("seeked", captureFrame);
                     resolve();
@@ -61,7 +73,7 @@
     function viewImages(frameNumber = 0) {
         requestAnimationFrame(() => {
             viewer.getContext("2d").putImageData(images[frameNumber], 0, 0);
-            viewImages((frameNumber + 1) % MAX_FRAMES);
+            viewImages((frameNumber + 1) % maxFrames);
         });
     }
 

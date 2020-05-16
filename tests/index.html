@@ -7,12 +7,15 @@
 </style>
 
 <body>
-    <progress id="progress" value="0" max="360"></progress>
+    <form>
+        <label>count: <input name="count" type="number" value="360"></label>
+        <label>width: <input name="width" type="number" value="1920"></label>
+        <label>height: <input name="height" type="number" value="1080"></label>
+        <label>workers: <input name="workers" type="number" value="4"></label>
+        <button type="submit">OK</button>
+    </form>
+    <progress id="progress" hidden></progress>
     <canvas id="viewer" hidden></canvas>
-    <!--
-    <video id="loader" hidden></video>
-    <canvas id="decoder" hidden></canvas>    
-    -->
 </body>
 <script src="index.js"></script>
 
