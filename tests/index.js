@@ -36,6 +36,7 @@
             workerPromises.push(new Promise((resolve, reject) => {
                 const videoElement = document.createElement("video");
                 const canvasElement = document.createElement("canvas");
+                const contextCanvasElement = canvasElement.getContext("2d");
                 canvasElement.width = viewerElement.width = width;
                 canvasElement.height = viewerElement.height = height;
                 videoElement.src = VIDEO_FILENAME;
@@ -44,7 +45,7 @@
                     videoElement.oncanplay = null;
                     videoElement.currentTime = (indexWorker / fps) + VIDEO_TIME_OFFSET;
                 };
-                videoElement.onseeked = () => onseeked(videoElement, canvasElement.getContext("2d"),
+                videoElement.onseeked = () => onseeked(videoElement, contextCanvasElement,
                     () => progressElement.value++,
                     () => {
                         videoElement.onseeked = null;
