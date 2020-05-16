@@ -61,7 +61,7 @@
                 images[currentFrame] = imageData;
                 progress.value++;
                 if (currentFrame < maxFrames) {
-                    loader.currentTime = ((currentFrame + workers) / fps) + VIDEO_TIME_OFFSET;
+                    loader.currentTime = Math.max(((currentFrame + workers) / fps) + VIDEO_TIME_OFFSET, loader.duration);
                 } else {
                     loader.removeEventListener("seeked", captureFrame);
                     resolve();
