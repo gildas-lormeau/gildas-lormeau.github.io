@@ -1,8 +1,12 @@
 (() => {
 
-    const VIDEO_FPS = 15;
+    const VIDEO_FPS = {
+        "0001-0359.mp4": 60,
+        "0001-0718.mp4": 15,
+        "0001-0718-SD.mp4": 15,
+    }
     const VIDEO_MAX_FRAMES = 360;
-    const VIDEO_TIME_OFFSET = 0.005;
+    const VIDEO_TIME_OFFSET = 0.001;
 
     const viewerElement = document.getElementById("viewer");
     const progressElement = document.getElementById("progress");
@@ -16,7 +20,7 @@
         height = Number(formElement.height.value);
         maxFrames = Number(formElement.count.value) - 1;
         workers = Number(formElement.workers.value);
-        fps = (VIDEO_FPS / VIDEO_MAX_FRAMES) * (maxFrames + 1);
+        fps = (VIDEO_FPS[filename] / VIDEO_MAX_FRAMES) * (maxFrames + 1);
         event.preventDefault();
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
