@@ -24,13 +24,13 @@
         viewerElement.hidden = true;
         progressElement.value = 0;
         progressElement.max = maxFrames;
-        await decodeFrames();
+        await decodeFrames(() => progressElement.value++);
         progressElement.hidden = true;
         viewerElement.hidden = false;
         viewImages();
     };
 
-    function decodeFrames() {
+    function decodeFrames(progressCallback) {
         const workerPromises = [];
         for (let indexWorker = 0; indexWorker < workers; indexWorker++) {
             workerPromises.push(new Promise((resolve, reject) => {
@@ -45,12 +45,10 @@
                     videoElement.oncanplay = null;
                     videoElement.currentTime = (indexWorker / fps) + VIDEO_TIME_OFFSET;
                 };
-                videoElement.onseeked = () => onseeked(videoElement, contextCanvasElement,
-                    () => progressElement.value++,
-                    () => {
-                        videoElement.onseeked = null;
-                        resolve();
-                    })
+                videoElement.onseeked = () => onseeked(videoElement, contextCanvasElement, progressCallback, () => {
+                    videoElement.onseeked = null;
+                    resolve();
+                })
             }));
         }
         return Promise.all(workerPromises);
