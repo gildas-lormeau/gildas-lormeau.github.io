@@ -6,7 +6,7 @@
         "0001-0718-SD.mp4": 15,
     }
     const VIDEO_MAX_FRAMES = 360;
-    const VIDEO_TIME_OFFSET = 0.001;
+    const VIDEO_TIME_OFFSET = 0.005;
 
     const viewerElement = document.getElementById("viewer");
     const progressElement = document.getElementById("progress");
