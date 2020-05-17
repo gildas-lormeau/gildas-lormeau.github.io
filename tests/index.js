@@ -2,7 +2,7 @@
 
     const VIDEO_FILENAME = "0001-0718.mp4";
     const VIDEO_FPS = 15;
-    const VIDEO_TIME_OFFSET = 0.0125;
+    const VIDEO_TIME_OFFSET = 0.005;
 
     const viewerElement = document.getElementById("viewer");
     const progressElement = document.getElementById("progress");
