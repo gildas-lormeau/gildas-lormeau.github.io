@@ -1,16 +1,16 @@
 (() => {
 
-    const VIDEO_FILENAME = "0001-0718.mp4";
     const VIDEO_FPS = 15;
     const VIDEO_TIME_OFFSET = 0.005;
 
     const viewerElement = document.getElementById("viewer");
     const progressElement = document.getElementById("progress");
     const formElement = document.forms[0];
-    let images, width, height, maxFrames, fps, workers, animationFrameId;
+    let images, filename, width, height, maxFrames, fps, workers, animationFrameId;
 
     formElement.onsubmit = async event => {
         images = [];
+        filename = formElement.filename.value;
         width = Number(formElement.width.value);
         height = Number(formElement.height.value);
         maxFrames = Number(formElement.count.value) - 1;
@@ -39,7 +39,7 @@
                 const contextCanvasElement = canvasElement.getContext("2d");
                 canvasElement.width = viewerElement.width = width;
                 canvasElement.height = viewerElement.height = height;
-                videoElement.src = VIDEO_FILENAME;
+                videoElement.src = filename;
                 videoElement.onerror = reject;
                 videoElement.oncanplay = () => {
                     videoElement.oncanplay = null;
