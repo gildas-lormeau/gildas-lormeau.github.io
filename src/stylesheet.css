@@ -9,49 +9,61 @@ body {
     font-family: "GinSSB60";
     background-color: #e5af93;
     margin: 0;
-    padding-top: 10vh;
     display: flex;
     flex-direction: column;
+    min-height: 100dvh;
 }
 
-body a~p {
+main {
     font-style: italic;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
 }
 
-body a~p>span::before {
-    font-family: sans-serif;
-}
-
-img {
-    max-width: 30vmax;
-}
-
-a,
-p {
+.download-links {
+    display: flex;
     align-self: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    font-family: Arial, Helvetica, sans-serif;
+    padding-block: 15px;
+    padding-block-end: 25px;
+    padding-inline: 10px;
+    width: 75vw;
+}
+
+.download-links a {
+    padding: 5px;
     text-align: center;
 }
 
+.download-links a, .download-links a:visited {
+    color: #9f4830
+}
+
+img {
+    max-width: 40vmin;
+}
+
 p {
-    font-size: 7vmax;
+    font-size: 7vmin;
     margin: 25px;
     margin-top: 4vh;
     margin-bottom: 50px;
+    text-align: center;
 }
 
-footer {
-    background-color: #9f4830;
-    font-family: sans-serif;
-    position: fixed;
-    text-align: right;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    padding: .75em;
+@media screen and (max-width: 600px) {
+    .download-links a {
+        font-size: .8em;
+    }
 }
 
-footer,
-footer a {
-    color: #2d140e;
-    font-weight: bold;
+@media screen and (max-width: 400px) {
+    .download-links a {
+        font-size: .7em;
+    }
 }
