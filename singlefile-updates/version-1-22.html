@@ -11,13 +11,18 @@
             background-color: #F7F4F3;
         }
 
+        body,
+        hr,
+        footer {
+            margin-top: 20px;
+        }
+
         body {
             font-family: Arial, sans-serif;
             font-size: 16px;
             max-width: 70%;
             margin-left: auto;
             margin-right: auto;
-            margin-top: 20px;
             margin-bottom: 20px;
             padding: 20px;
             border: 1px solid #ccc;
@@ -28,7 +33,7 @@
 
         h1,
         h2 {
-            color: #5d5d5d;
+            color: #444;
             font-weight: bold;
         }
 
@@ -36,11 +41,22 @@
             text-align: center;
             margin-top: 0;
             margin-bottom: 50px;
+            font-size: 24px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+
+        h2,
+        p,
+        ul,
+        li {
+            margin-bottom: 10px;
         }
 
         h2 {
             margin-top: 30px;
-            margin-bottom: 10px;
         }
 
         a,
@@ -51,21 +67,14 @@
         p,
         li {
             line-height: 1.5;
-            margin-bottom: 10px;
-        }
-
-        ul {
-            margin-bottom: 10px;
         }
 
         hr {
-            margin-top: 20px;
             border: 1px solid #ccc;
         }
 
         footer {
             text-align: right;
-            margin-top: 20px;
             color: #808080;
         }
 
@@ -79,8 +88,6 @@
 
         @media screen and (max-width: 600px) {
             body {
-                margin: 10px;
-                max-width: 100%;
                 border: none;
             }
         }
