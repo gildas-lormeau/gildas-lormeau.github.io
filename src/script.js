@@ -10,7 +10,7 @@ let animating = false;
 
 updateIcon();
 
-fileIconElement.onmouseenter = async () => {
+fileIconElement.onmouseenter = fileIconElement.ontouchstart = async () => {
     if (!animating) {
         animating = true;
         let animation = fileIconElement.animate([
