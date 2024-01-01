@@ -9,16 +9,16 @@
 </head>
 
 <body>
+    <img class="file-icons" src="html.png" hidden>
+    <img class="file-icons" src="zip.png" hidden>
+    <img class="file-icons" src="png.png" hidden>
     <main>
-        <img src="html.png">
+        <img id="file-icon">
         <p>Ceci n'est pas une page web.</p>
     </main>
     <div class="download-links">
-        <a href="" download="index.zip" target="_blank" type="application/zip" title="Download this page">
-            Download this page as a ZIP file (84.5 KB)
-        </a>
-        <a href="" download="index.html" target="_blank" type="text/html" title="Download this page">
-            Download this page as an HTML file (84.5 KB)
+        <a href="" target="_blank" title="Download this page" id="file-link">
+            Download this page as <span id="file-format"></span> file
         </a>
     </div>
     <script src="script.js"></script>
