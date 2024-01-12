@@ -1,64 +1,69 @@
 @font-face {
-    font-family: "GinSSB60";
-    font-style: normal;
-    font-weight: 400;
-    src: url(GinSSB60.ttf) format("truetype");
+  font-family: "GinSSB60";
+  font-style: normal;
+  font-weight: 400;
+  src: url(GinSSB60.ttf) format("truetype");
 }
 
 body {
-    font-family: "GinSSB60";
-    background-color: #e5af93;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100dvh;
+  background-color: #f1e4c1;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100dvh;
 }
 
 main {
-    font-style: italic;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex: 1;
-}
-
-.download-links {
-    display: flex;
-    align-self: center;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    font-family: Arial, Helvetica, sans-serif;
-    padding-block: 15px;
-    padding-block-end: 30px;
-    padding-inline: 10px;
-    width: 75vw;
-}
-
-.download-links a, .download-links a:visited {
-    color: #9f4830
-}
-
-img {
-    max-width: 40vmin;
+  font-family: "GinSSB60";
+  font-size: 7vmin;
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
 }
 
 p {
-    font-size: 7vmin;
-    margin: 25px;
-    margin-top: 4vh;
-    margin-bottom: 50px;
-    text-align: center;
+  margin-block: .5em;
+  margin-inline: 1em;
 }
 
-@media screen and (max-width: 600px) {
-    .download-links a {
-        font-size: .8em;
-    }
+footer {
+  font-size: max(3vmin, .75em);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+  max-block-size: var(--line-height);
+  overflow: hidden;
+  margin-block-end: 1em;
+  --line-height: 2.5em;
 }
 
-@media screen and (max-width: 400px) {
-    .download-links a {
-        font-size: .7em;
-    }
+#links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a {
+  display: flex;
+  min-block-size: var(--line-height);
+  align-items: center;
+  text-align: center;
+  margin-inline: 1em;
+}
+
+a,
+a:visited {
+  color: #9f4830;
+}
+
+img {
+  max-inline-size: 40vmin;
+}
+
+p {
+  text-align: center;
 }
