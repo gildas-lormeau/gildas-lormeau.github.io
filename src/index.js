@@ -102,10 +102,13 @@ const LinkTranslationAnimation = (() => {
         async animate() {
             this.linkIndex++;
             await animate(this.element, this.linkIndex * this.lineHeight, ANIMATION_DURATION, TRANSLATION_DELAY);
+            Array.from(this.element.children).forEach(linkElement => linkElement.tabIndex = -1);
             if (this.linkIndex >= this.linkCount) {
                 this.linkIndex = START_LINK_INDEX;
                 await animate(this.element);
             }
+            document.activeElement.blur();
+            this.element.children[this.linkIndex].tabIndex = 0;
         }
     };
 

@@ -53,11 +53,17 @@ a {
   align-items: center;
   text-align: center;
   margin-inline: 1em;
+  padding-inline: 1em;
 }
 
 a,
 a:visited {
   color: #9f4830;
+}
+
+a:focus-visible {
+  outline-offset: -3px;
+  outline: 2px dotted #9f4830;
 }
 
 img {
