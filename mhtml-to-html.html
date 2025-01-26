@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>MHTML Viewer</title>
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        label,
+        input {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            bottom: 16px;
+            left: 16px;
+            margin: 16px;
+            padding: 16px;
+            display: flex;
+        }
+
+        label {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            color: #555;
+        }
+
+        body:hover label {
+            background-color: #f9f9f9;
+        }
+
+        input {
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <label for="file">Click or drag and drop an mhtml file here</label>
+    <input type="file" id="file" accept=".mht,.mhtml">
+    <script type="module">
+        import { convert } from "https://cdn.jsdelivr.net/npm/mhtml-to-html/lib/mod.js";
+
+        file.addEventListener("change", () => {
+            const reader = new FileReader();
+            reader.onload = async () => {
+                const html = await convert(reader.result);
+                document.open();
+                document.write(html);
+                document.close();
+            };
+            reader.readAsText(file.files[0]);
+        });
+    </script>
+</body>
+
+</html>
