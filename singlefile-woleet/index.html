@@ -79,19 +79,20 @@
                         </div>
                         <div class="content">
                             {{#receipt.anchors.0}}
-                                <img src="img/see.png"/><a href="https://share.woleet.io/?receiptURL=https%3A%2F%2Fapi.woleet.io%2Fv1%2Freceipt%2F{{anchorId}}" target="blank">
+                                <a href="https://share.woleet.io/?receiptURL=https%3A%2F%2Fapi.woleet.io%2Fv1%2Freceipt%2F{{anchorId}}"
+                                    target="_blank"><img src="img/see.png" alt=""/>
                                     See Bitcoin proof details
                                 </a>
                                 <br>
-                                <img src="img/download.png"/><a onclick="downloadProof({{index}})"
+                                <a onclick="downloadProof({{index}})"
                                     onkeydown="if (event.key == 'Enter' || event.key == ' ') { event.preventDefault(); downloadProof({{index}}); }"
-                                    role="button" tabindex="0">
+                                    role="button" tabindex="0"><img src="img/download.png" alt=""/>
                                     Download proof receipt (Chainpoint v2)
                                 </a>
                                 <br>
-                                <img src="img/download.png"/><a href="https://api.woleet.io/v1/receipt/{{anchorId}}/ots"
-                                    target="blank">
-                                    Download proof receipt (Opentimestamps) 
+                                <a href="https://api.woleet.io/v1/receipt/{{anchorId}}/ots"
+                                    target="_blank"><img src="img/download.png" alt=""/>
+                                    Download proof receipt (Opentimestamps)
                                 </a>
                             {{/receipt.anchors.0}}
                         </div>
@@ -105,7 +106,7 @@
             </div>
             <div class="woleet">
                 <p>Bitcoin proof provided by</p>
-                <a href="https://www.woleet.io" target="blank"><img src="img/woleet.png" alt=""></a>
+                <a href="https://www.woleet.io" target="_blank"><img src="img/woleet.png" alt=""></a>
             </div>
         </div>
 
