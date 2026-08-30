@@ -84,8 +84,9 @@
                                 </a>
                                 <br>
                                 <img src="img/download.png"/><a onclick="downloadProof({{index}})"
-                                    target="blank">
-                                    Download proof receipt (Chainpoint v2) 
+                                    onkeydown="if (event.key == 'Enter' || event.key == ' ') { event.preventDefault(); downloadProof({{index}}); }"
+                                    role="button" tabindex="0">
+                                    Download proof receipt (Chainpoint v2)
                                 </a>
                                 <br>
                                 <img src="img/download.png"/><a href="https://api.woleet.io/v1/receipt/{{anchorId}}/ots"

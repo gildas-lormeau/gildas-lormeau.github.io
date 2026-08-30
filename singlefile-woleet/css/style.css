@@ -51,6 +51,9 @@ header img {
   color: inherit;
   text-decoration: none;
 }
+.container a:not([href]) {
+  cursor: pointer;
+}
 .container .btn-primary:hover .button-line-top:before {
   left: 0;
   width: 0;
